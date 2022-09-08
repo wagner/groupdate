@@ -13,6 +13,7 @@ require "groupdate/adapters/base_adapter"
 require "groupdate/adapters/mysql_adapter"
 require "groupdate/adapters/postgresql_adapter"
 require "groupdate/adapters/sqlite_adapter"
+require "groupdate/adapters/timestream_adapter"
 
 module Groupdate
   class Error < RuntimeError; end
@@ -45,6 +46,7 @@ end
 
 Groupdate.register_adapter ["Mysql2", "Mysql2Spatial", "Mysql2Rgeo"], Groupdate::Adapters::MySQLAdapter
 Groupdate.register_adapter ["PostgreSQL", "PostGIS", "Redshift"], Groupdate::Adapters::PostgreSQLAdapter
+Groupdate.register_adapter "Amazon Timestream", Groupdate::Adapters::AmazonTimestreamAdapter
 Groupdate.register_adapter "SQLite", Groupdate::Adapters::SQLiteAdapter
 
 require "groupdate/enumerable"
